@@ -12,7 +12,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import {db} from "../firebase"
-import ReactMapGL, { Marker, Popup } from "!react-map-gl";
+import mapboxgl from '!mapbox-gl';
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import walk from "../Data/Walk.gif"
 import { useStateValue } from "../StateProvider";
 import {useHistory} from 'react-router-dom'
