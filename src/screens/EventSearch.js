@@ -16,6 +16,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import walk from "../Data/Walk.gif"
 import { useStateValue } from "../StateProvider";
 import {useHistory} from 'react-router-dom'
+import building from "./building.png";
 
 
 //modal styles 
@@ -719,7 +720,7 @@ function EventSearch() {
       {data.map((p) => (
         <>
           <Marker className="marker" latitude={JSON.parse(p.lat)} longitude={JSON.parse(p.long)} offsetLeft={-20} offsetTop={-10}>
-          <img src="http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-Picture.png" width={viewport.zoom * 5} height={viewport.zoom * 5}  onClick={() => handleMarkerClick(p.lat, p.long,p.eventAddress)} alt=""/>
+          <img src={building} width={viewport.zoom * 5} height={viewport.zoom * 5}  onClick={() => handleMarkerClick(p.lat, p.long,p.eventAddress)} alt=""/>
          
             </Marker>
             {p._id === currentPlaceId && (
