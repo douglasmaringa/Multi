@@ -27,7 +27,7 @@ function ProjectCard({name,summary,image,start,finish,desc,username}) {
     const classes = useStyles();
     const history = useHistory()
       //redux
-  const [ dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
 
   const newScreen = () => {
     dispatch({
