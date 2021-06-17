@@ -90,7 +90,7 @@ function Search() {
 
   const history = useHistory()
   //redux
-  const [ dispatch] = useStateValue();
+  const [ ,dispatch] = useStateValue();
 
   const newScreen = (username) => {
     dispatch({
