@@ -90,7 +90,7 @@ function EventSearch() {
 
   const history = useHistory()
   //redux
-  const [ dispatch] = useStateValue();
+  const [ ,dispatch] = useStateValue();
 
   const newScreen = (eventemail,eventname,eventsummary,eventdesc,eventimage,eventstart,eventfinish,eventneeded,eventbring,lat,long) => {
   dispatch({
