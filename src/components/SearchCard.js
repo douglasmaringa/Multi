@@ -26,7 +26,7 @@ export default function SearchCard({name,summary ,desc,username,image}) {
   const classes = useStyles();
   const history = useHistory()
   //redux
-  const [ dispatch] = useStateValue();
+  const [ ,dispatch] = useStateValue();
 
   const newScreen = (username) => {
     dispatch({
