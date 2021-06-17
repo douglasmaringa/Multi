@@ -26,7 +26,7 @@ function ServiceCard({name,summary,image,desc,username}) {
     const classes = useStyles();
     const history = useHistory()
     //redux
-const [ dispatch] = useStateValue();
+const [, dispatch] = useStateValue();
 
 const newScreen = () => {
   dispatch({
