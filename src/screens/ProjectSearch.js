@@ -93,7 +93,7 @@ function ProjectSearch() {
 
   const history = useHistory()
        //redux
-       const [ dispatch] = useStateValue();
+       const [, dispatch] = useStateValue();
 
        const newScreen = (projectemail,projectname,projectsummary,projectdesc,projectimage,projectstart,projectfinish,projectlooking) => {
         dispatch({
