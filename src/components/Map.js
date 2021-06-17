@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMapGL, { Marker } from "react-map-gl";
+import building from "../screens/building.png";
 
 function Map({lat,long}) {
 
@@ -23,7 +24,7 @@ const [viewport, setViewport] = React.useState({
      
         
           <Marker className="marker" latitude={lat} longitude={long} offsetLeft={-20} offsetTop={-10}>
-          <img src="http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-Picture.png" width={viewport.zoom * 5} height={viewport.zoom * 5} alt="" />
+          <img src={building} width={viewport.zoom * 5} height={viewport.zoom * 5} alt="" />
          
             </Marker>
            
