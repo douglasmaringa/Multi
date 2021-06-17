@@ -28,7 +28,7 @@ function EventCard({name,summary,image,start,desc,finish,needed,bring,username,l
 
     const history = useHistory()
     //redux
-const [dispatch] = useStateValue();
+const [,dispatch] = useStateValue();
 
 const newScreen = () => {
   dispatch({
