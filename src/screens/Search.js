@@ -698,7 +698,7 @@ function Search() {
       {data.map((p) => (
         <>
           <Marker className="marker" latitude={JSON.parse(p.lat)} longitude={JSON.parse(p.long)} offsetLeft={-20} offsetTop={-10}>
-          <img src="http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-Picture.png" width={viewport.zoom * 5} height={viewport.zoom * 5}  onClick={() => handleMarkerClick(p._id, p.lat, p.long,p.title)} alt="kk"/>
+          <img src="https://smallimg.pngkey.com/png/small/29-295517_building-icon-svg-png-icon-free-download-384132.png" width={viewport.zoom * 5} height={viewport.zoom * 5}  onClick={() => handleMarkerClick(p._id, p.lat, p.long,p.title)} alt="kk"/>
          
             </Marker>
             {p._id === currentPlaceId && (
