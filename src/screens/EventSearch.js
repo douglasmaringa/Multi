@@ -274,9 +274,20 @@ function EventSearch() {
 })
         };
 
-        //reset
+       //reset
         const reseted =()=>{
-          window.location.href = "/eventsearch";
+
+          setLoading(true)
+          setEve(false)
+          setReset(false)
+         db.collection("event").orderBy('timestamp','desc').onSnapshot(snapshot=>{
+           console.log(snapshot.docs.map(doc=>doc.data()))
+         setAllData(snapshot.docs.map(doc=>doc.data()));
+         setFilteredData(snapshot.docs.map(doc=>doc.data()));
+         setLoading(false)
+         })
+        
+         
         }
 
     return (
