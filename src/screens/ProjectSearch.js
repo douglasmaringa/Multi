@@ -93,7 +93,7 @@ function ProjectSearch() {
 
   const history = useHistory()
        //redux
-       const [, dispatch] = useStateValue();
+       const [ ,dispatch] = useStateValue();
 
        const newScreen = (projectemail,projectname,projectsummary,projectdesc,projectimage,projectstart,projectfinish,projectlooking) => {
         dispatch({
@@ -209,8 +209,92 @@ function ProjectSearch() {
                             setFilteredData(result);
                            // alert(event.target.value)
                             }
+
+                           //checkbox state
+const[checkss1,setCheckss1]=useState(false)
+const[checkss2,setCheckss2]=useState(false)
+const[checkss3,setCheckss3]=useState(false)
+const[checkss4,setCheckss4]=useState(false)
+const[checkss5,setCheckss5]=useState(false)
+const[checkss6,setCheckss6]=useState(false)
+const[checkss7,setCheckss7]=useState(false)
+const[checkss8,setCheckss8]=useState(false)
+const[checkss9,setCheckss9]=useState(false)
+const[checkss10,setCheckss10]=useState(false)
+const[checkss11,setCheckss11]=useState(false)
+const[checkss12,setCheckss12]=useState(false)
+const[checkss13,setCheckss13]=useState(false)
+const[checkss14,setCheckss14]=useState(false)
+const[checkss15,setCheckss15]=useState(false)
+const[checkss16,setCheckss16]=useState(false)
+
+
                             const handleProjects = (event) => {
                                 let value = event.target.value.toLowerCase();
+
+                                if(value==="research"){
+                                  setCheckss1(true)
+                                }
+                                else if(value==="citizen science")
+                                {
+                                  setCheckss2(true)
+                                }
+                                else if(value==="new itiatives")
+                                {
+                                  setCheckss3(true)
+                                }
+                                else if(value==="black spot")
+                                {
+                                  setCheckss4(true)
+                                }
+                                else if(value==="preservation")
+                                {
+                                  setCheckss5(true)
+                                }
+                                else if(value==="rehab")
+                                {
+                                  setCheckss6(true)
+                                }
+                                else if(value==="crowd funding")
+                                {
+                                  setCheckss7(true)
+                                }
+                                else if(value==="involves schools")
+                                {
+                                  setCheckss8(true)
+                                }
+                                else if(value==="arduos")
+                                {
+                                  setCheckss9(true)
+                                }
+                                else if(value==="building")
+                                {
+                                  setCheckss10(true)
+                                }
+                                else if(value==="family friendly")
+                                {
+                                  setCheckss11(true)
+                                }
+                                else if(value==="easy as")
+                                {
+                                  setCheckss12(true)
+                                }
+                                else if(value==="training")
+                                {
+                                  setCheckss13(true)
+                                }
+                                else if(value==="educational")
+                                {
+                                  setCheckss14(true)
+                                }
+                                else if(value==="volunteers")
+                                {
+                                  setCheckss15(true)
+                                }
+                                
+                                else{
+                                  setCheckss16(true)
+                                }
                                 let result = [];
                                 console.log(value);
                                 result = filteredData.filter((data) => {
@@ -221,7 +305,6 @@ function ProjectSearch() {
                                 setFilteredData(result);
                                 //alert(event.target.value)
                                 }
-                               
 
     //get search data from firebase
     useEffect(() => {
@@ -248,21 +331,38 @@ function ProjectSearch() {
 
         
 
-    //reset
-        const reseted =()=>{
-
-          setLoading(true)
-          setProj(false)
-          setReset(false)
-         db.collection("project").orderBy('timestamp','desc').onSnapshot(snapshot=>{
-           console.log(snapshot.docs.map(doc=>doc.data()))
-         setAllData(snapshot.docs.map(doc=>doc.data()));
-         setFilteredData(snapshot.docs.map(doc=>doc.data()));
-         setLoading(false)
-         })
-        
-         
-        }
+      //reset
+      const reseted =()=>{
+//Projects
+setCheckss1(false)
+setCheckss2(false)
+setCheckss3(false)
+setCheckss4(false)
+setCheckss5(false)
+setCheckss6(false)
+setCheckss7(false)
+setCheckss8(false)
+setCheckss9(false)
+setCheckss9(false)
+setCheckss10(false)
+setCheckss11(false)
+setCheckss12(false)
+setCheckss13(false)
+setCheckss14(false)
+setCheckss15(false)
+setCheckss16(false)
+        setLoading(true)
+        setProj(false)
+        setReset(false)
+       db.collection("project").orderBy('timestamp','desc').onSnapshot(snapshot=>{
+         console.log(snapshot.docs.map(doc=>doc.data()))
+       setAllData(snapshot.docs.map(doc=>doc.data()));
+       setFilteredData(snapshot.docs.map(doc=>doc.data()));
+       setLoading(false)
+       })
+      
+       
+      }
 
     return (
         <div >
@@ -578,73 +678,74 @@ function ProjectSearch() {
                  <FormLabel component="legend">Projects</FormLabel>
                  <FormGroup>
                  <FormControlLabel
-                   control={<Checkbox value="research" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="research" checked={checkss1} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="research"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="citizen science" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="citizen science" checked={checkss2} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="citizen science"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="new itiatives" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="new itiatives" checked={checkss3} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="new itiatives"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="black spot" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="black spot" checked={checkss4} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="black spot"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="preservation" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="preservation" checked={checkss5} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="preservation"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="rehab" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="rehab" checked={checkss6} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="rehab"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="crowd funding" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="crowd funding" checked={checkss7} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="crowd funding"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="involves schools" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="involves schools" checked={checkss8} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="involves schools"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="arduos" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="arduos" checked={checkss9} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="arduos"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="building" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="building" checked={checkss10} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="building"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="family friendly" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="family friendly" checked={checkss11} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="family friendly"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="easy as" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="easy as" checked={checkss12} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="easy as"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="training" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="training" checked={checkss13} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="training"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="educational" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="educational" checked={checkss14} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="educational"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="volunteers" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="volunteers" checked={checkss15} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="volunteers"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="policy" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="policy" checked={checkss16} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="policy"
                    />
                   
                 </FormGroup>
                  <FormHelperText>Be careful</FormHelperText>
                  </div>
+                 
                  <Button variant="contained" color="primary" onClick={handleClose}>
                 Save
             </Button>
