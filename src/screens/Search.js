@@ -271,7 +271,7 @@ function Search() {
 
         //reset
         const reseted =()=>{
-          window.location.href = "/search";
+          window.location.href = "https://boring-hawking-5638c8.netlify.app/search";
         }
 
     return (
