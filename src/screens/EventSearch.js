@@ -91,7 +91,7 @@ function EventSearch() {
 
   const history = useHistory()
   //redux
-  const [ ,dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
 
   const newScreen = (eventemail,eventname,eventsummary,eventdesc,eventimage,eventstart,eventfinish,eventneeded,eventbring,lat,long) => {
   dispatch({
@@ -200,18 +200,115 @@ function EventSearch() {
                         setFilteredData(result);
                         //alert(event.target.value)
                         }
-                        const handleEvents = (event) => {
-                            let value = event.target.value.toLowerCase();
-                            let result = [];
-                            console.log(value);
-                            result = filteredData.filter((data) => {
-                            return data.eventcategory.search(value) !== -1;
-                            });
-                            setEve(true)
-                            setReset(true)
-                            setFilteredData(result);
-                           // alert(event.target.value)
-                            }
+
+ //checkbox state
+ const[checks1,setChecks1]=useState(false)
+ const[checks2,setChecks2]=useState(false)
+ const[checks3,setChecks3]=useState(false)
+ const[checks4,setChecks4]=useState(false)
+ const[checks5,setChecks5]=useState(false)
+ const[checks6,setChecks6]=useState(false)
+ const[checks7,setChecks7]=useState(false)
+ const[checks8,setChecks8]=useState(false)
+ const[checks9,setChecks9]=useState(false)
+ const[checks10,setChecks10]=useState(false)
+ const[checks11,setChecks11]=useState(false)
+ const[checks12,setChecks12]=useState(false)
+ const[checks13,setChecks13]=useState(false)
+ const[checks14,setChecks14]=useState(false)
+ const[checks15,setChecks15]=useState(false)
+ const[checks16,setChecks16]=useState(false)
+ const[checks17,setChecks17]=useState(false)
+ const[checks18,setChecks18]=useState(false)
+ 
+ 
+                         const handleEvents = (event) => {
+                             let value = event.target.value.toLowerCase();
+ 
+                             if(value==="free"){
+                               setChecks1(true)
+                             }
+                             else if(value==="carbon nuetral")
+                             {
+                               setChecks2(true)
+                             }
+                             else if(value==="self guided")
+                             {
+                               setChecks3(true)
+                             }
+                             else if(value==="catered")
+                             {
+                               setChecks4(true)
+                             }
+                             else if(value==="overnight")
+                             {
+                               setChecks5(true)
+                             }
+                             else if(value==="arducus")
+                             {
+                               setChecks6(true)
+                             }
+                             else if(value==="remote")
+                             {
+                               setChecks7(true)
+                             }
+                             else if(value==="cultural")
+                             {
+                               setChecks8(true)
+                             }
+                             else if(value==="greater benefit")
+                             {
+                               setChecks9(true)
+                             }
+                             else if(value==="family friendly")
+                             {
+                               setChecks10(true)
+                             }
+                             else if(value==="easy as")
+                             {
+                               setChecks11(true)
+                             }
+                             else if(value==="training")
+                             {
+                               setChecks12(true)
+                             }
+                             else if(value==="educational")
+                             {
+                               setChecks13(true)
+                             }
+                             else if(value==="volunteers")
+                             {
+                               setChecks14(true)
+                             }
+                             else if(value==="policy")
+                             {
+                               setChecks15(true)
+                             }
+                             else if(value==="profit")
+                             {
+                               setChecks16(true)
+                             }
+                             else if(value==="music and art")
+                             {
+                               setChecks17(true)
+                             }
+                             
+                             
+                             
+                             else{
+                               setChecks18(true)
+                             }
+                             let result = [];
+                             console.log(value);
+                             result = filteredData.filter((data) => {
+                             return data.eventcategory.search(value) !== -1;
+                             });
+                             setEve(true)
+                             setReset(true)
+                             setFilteredData(result);
+                            // alert(event.target.value)
+                             }
+ 
                             const handleProjects = (event) => {
                                 let value = event.target.value.toLowerCase();
                                 let result = [];
@@ -274,21 +371,42 @@ function EventSearch() {
 })
         };
 
-       //reset
-        const reseted =()=>{
+     //reset
+     const reseted =()=>{
 
-          setLoading(true)
-          setEve(false)
-          setReset(false)
-         db.collection("event").orderBy('timestamp','desc').onSnapshot(snapshot=>{
-           console.log(snapshot.docs.map(doc=>doc.data()))
-         setAllData(snapshot.docs.map(doc=>doc.data()));
-         setFilteredData(snapshot.docs.map(doc=>doc.data()));
-         setLoading(false)
-         })
-        
-         
-        }
+      setLoading(true)
+      setEve(false)
+     
+      //events
+      setChecks1(false)
+      setChecks2(false)
+      setChecks3(false)
+      setChecks4(false)
+      setChecks5(false)
+      setChecks6(false)
+      setChecks7(false)
+      setChecks8(false)
+      setChecks9(false)
+      setChecks9(false)
+      setChecks10(false)
+      setChecks11(false)
+      setChecks12(false)
+      setChecks13(false)
+      setChecks14(false)
+      setChecks15(false)
+      setChecks16(false)
+      setChecks17(false)
+      setChecks18(false)
+      setReset(false)
+     db.collection("event").orderBy('timestamp','desc').onSnapshot(snapshot=>{
+       console.log(snapshot.docs.map(doc=>doc.data()))
+     setAllData(snapshot.docs.map(doc=>doc.data()));
+     setFilteredData(snapshot.docs.map(doc=>doc.data()));
+     setLoading(false)
+     })
+    
+     
+    }
 
     return (
         <div >
@@ -501,84 +619,80 @@ function EventSearch() {
                   aria-labelledby="simple-modal-title"
                   aria-describedby="simple-modal-description"
                   > 
-                <div style={modalStyle} className={classes.paper}>
+                 <div style={modalStyle} className={classes.paper}>
                 <div className="modal-section">
                  <FormLabel component="legend">Events</FormLabel>
                  <FormGroup>
                  <FormControlLabel
-                   control={<Checkbox value="free" onChange={(event) =>handleEvents(event)} name="structure" />}
-                   label="free"
-                   />
-                   <FormControlLabel
-                   control={<Checkbox value="for a fee" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="free" checked={checks1} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="for a fee"
                    />
                   <FormControlLabel
-                   control={<Checkbox value="carbon nuetral" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="carbon nuetral" checked={checks2} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="carbon nuetral"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="self guided" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="self guided" checked={checks3} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="self guided"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="catered" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="catered" checked={checks4} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="catered"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="overnight" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="overnight" checked={checks5} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="overnight"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="arducus" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="arducus" checked={checks6} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="arducus"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="remote" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="remote" checked={checks7} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="remote"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="cultural" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="cultural" checked={checks8} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="cultural"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="greater benefit" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="greater benefit" checked={checks9} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="greater benefit"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="family friendly" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="family friendly" checked={checks10} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="family friendly"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="easy as" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="easy as" checked={checks11} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="easy as"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="training" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="training" checked={checks12} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="training"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="educational" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="educational" checked={checks13} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="educational"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="volunteers" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="volunteers" checked={checks14} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="volunteers"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="policy" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="policy" checked={checks15} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="policy"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="profit" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="profit" checked={checks16} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="profit"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="music and art" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="music and art" checked={checks17} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="music and art"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="citizen" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="citizen" checked={checks18} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="citizen"
                    />
                 </FormGroup>
