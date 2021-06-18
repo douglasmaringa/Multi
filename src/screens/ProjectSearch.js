@@ -248,9 +248,20 @@ function ProjectSearch() {
 
         
 
-        //reset
+    //reset
         const reseted =()=>{
-          window.location.href = "/eventsearch";
+
+          setLoading(true)
+          setProj(false)
+          setReset(false)
+         db.collection("search").orderBy('timestamp','desc').onSnapshot(snapshot=>{
+           console.log(snapshot.docs.map(doc=>doc.data()))
+         setAllData(snapshot.docs.map(doc=>doc.data()));
+         setFilteredData(snapshot.docs.map(doc=>doc.data()));
+         setLoading(false)
+         })
+        
+         
         }
 
     return (
