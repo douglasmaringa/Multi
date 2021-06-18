@@ -231,9 +231,8 @@ const body = (
               <a href={p.facebook} target="_blank" rel="noopener noreferrer"><FacebookIcon/></a>
               <a href={p.linkedin} target="_blank" rel="noopener noreferrer"><LinkedInIcon/></a>
               <a href={p.twitter} target="_blank" rel="noopener noreferrer"><TwitterIcon/></a>
-              <Button onClick={handleOpen}><EmailIcon/></Button>
           </div>
-          <h1>{p.name}</h1>
+          <h1>{p.name} <Button  onClick={handleOpen}><EmailIcon/></Button></h1>
           
            <div className="bsimageContainer">
                <div className="left-image">
