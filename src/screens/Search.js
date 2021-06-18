@@ -271,7 +271,20 @@ function Search() {
 
         //reset
         const reseted =()=>{
-          window.location.href = "https://boring-hawking-5638c8.netlify.app/search";
+
+          setLoading(true)
+          setEve(false)
+          setOrg(false)
+          setProj(false)
+          setReset(false)
+         db.collection("search").orderBy('timestamp','desc').onSnapshot(snapshot=>{
+           console.log(snapshot.docs.map(doc=>doc.data()))
+         setAllData(snapshot.docs.map(doc=>doc.data()));
+         setFilteredData(snapshot.docs.map(doc=>doc.data()));
+         setLoading(false)
+         })
+        
+         
         }
 
     return (
