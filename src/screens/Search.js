@@ -13,11 +13,13 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import {db} from "../firebase"
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+//import mapboxgl from "mapbox-gl"
 import walk from "../Data/Walk.gif"
+import building from "./building.png";
 import { useStateValue } from "../StateProvider";
 import {useHistory} from 'react-router-dom'
-import building from "./building.png";
-
+// eslint-disable-next-line import/no-webpack-loader-syntax
+//mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 
 
@@ -91,6 +93,11 @@ function Search() {
   const[loading,setLoading]=useState(true)
 
   const history = useHistory()
+
+
+
+
+
   //redux
   const [ ,dispatch] = useStateValue();
 
@@ -129,10 +136,38 @@ function Search() {
   const handleClose2 = () => {
     setOpen2(false);
   };
+//checkbox state
+const[check,setCheck]=useState(false)
+const[check2,setCheck2]=useState(false)
+const[check3,setCheck3]=useState(false)
+const[check4,setCheck4]=useState(false)
+const[check5,setCheck5]=useState(false)
+const[check6,setCheck6]=useState(false)
+
 
   //function for filtering
   const handleFocus = (event) => {
     let value = event.target.value.toLowerCase();
+    if(value==="aqautic"){
+      setCheck(true)
+    }else if(value==="weed")
+    {
+      setCheck2(true)
+    }
+    else if(value==="education")
+    {
+      setCheck3(true)
+    }
+    else if(value==="research")
+    {
+      setCheck4(true)
+    }
+    else if(value==="profit")
+    {
+      setCheck5(true)
+    }else{
+      setCheck6(true)
+    }
     let result = [];
     console.log(value);
     result = filteredData.filter((data) => {
@@ -144,59 +179,289 @@ function Search() {
     //alert(event.target.value)
     }
 
+    //checkbox state
+const[check7,setCheck7]=useState(false)
+const[check8,setCheck8]=useState(false)
+const[check9,setCheck9]=useState(false)
+const[check10,setCheck10]=useState(false)
+const[check11,setCheck11]=useState(false)
+
+
     const handleStructure = (event) => {
         let value = event.target.value.toLowerCase();
+        if(value==="full volunteer"){
+          setCheck7(true)
+        }else if(value==="professional")
+        {
+          setCheck8(true)
+        }
+        else if(value==="partial volunteer")
+        {
+          setCheck9(true)
+        }
+        else if(value==="government")
+        {
+          setCheck10(true)
+        }
+        else{
+          setCheck11(true)
+        }
         let result = [];
         console.log(value);
         result = filteredData.filter((data) => {
         return data.structure.search(value) !== -1;
         });
+        setOrg(true)
+    setReset(true)
         setFilteredData(result);
         //alert(event.target.value)
         }
-    
+
+        //checkbox state
+const[check12,setCheck12]=useState(false)
+const[check13,setCheck13]=useState(false)
+const[check14,setCheck14]=useState(false)
+const[check15,setCheck15]=useState(false)
+const[check16,setCheck16]=useState(false)
+const[check17,setCheck17]=useState(false)  
+
         const handleLooking = (event) => {
             let value = event.target.value.toLowerCase();
+            if(value==="volunteer"){
+              setCheck12(true)
+            }else if(value==="employees")
+            {
+              setCheck13(true)
+            }
+            else if(value==="resources")
+            {
+              setCheck14(true)
+            }
+            else if(value==="legal")
+            {
+              setCheck15(true)
+            } else if(value==="land")
+            {
+              setCheck16(true)
+            }
+            else{
+              setCheck17(true)
+            }
             let result = [];
             console.log(value);
             result = filteredData.filter((data) => {
             return data.looking.search(value) !== -1;
             });
+            setOrg(true)
+    setReset(true)
             setFilteredData(result);
             //alert(event.target.value)
             }
+
+             //checkbox state
+const[check18,setCheck18]=useState(false)
+const[check19,setCheck19]=useState(false)
+const[check20,setCheck20]=useState(false)
+const[check21,setCheck21]=useState(false)
+
             const handleLocation = (event) => {
                 let value = event.target.value.toLowerCase();
+                if(value==="single"){
+                  setCheck18(true)
+                }else if(value==="multiple")
+                {
+                  setCheck19(true)
+                }
+                else if(value==="where required")
+                {
+                  setCheck20(true)
+                }
+                
+                else{
+                  setCheck21(true)
+                }
                 let result = [];
                 console.log(value);
                 result = filteredData.filter((data) => {
                 return data.location.search(value) !== -1;
                 });
+                setOrg(true)
+    setReset(true)
                 setFilteredData(result);
                 //alert(event.target.value)
                 }
+
+                //checkbox state
+const[check22,setCheck22]=useState(false)
+const[check23,setCheck23]=useState(false)
+const[check24,setCheck24]=useState(false)
+const[check25,setCheck25]=useState(false)
+const[check26,setCheck26]=useState(false)
+const[check27,setCheck27]=useState(false)
+const[check28,setCheck28]=useState(false)
                 const handleProvides = (event) => {
                     let value = event.target.value.toLowerCase();
+                    if(value==="people"){
+                      setCheck22(true)
+                    }else if(value==="incursions")
+                    {
+                      setCheck23(true)
+                    }
+                    else if(value==="training")
+                    {
+                      setCheck24(true)
+                    }
+                    else if(value==="advice")
+                    {
+                      setCheck25(true)
+                    }
+                    else if(value==="resources")
+                    {
+                      setCheck26(true)
+                    }
+                    else if(value==="space")
+                    {
+                      setCheck27(true)
+                    }
+                    
+                    else{
+                      setCheck28(true)
+                    }
                     let result = [];
                     console.log(value);
                     result = filteredData.filter((data) => {
                     return data.provides.search(value) !== -1;
                     });
+                    setOrg(true)
+    setReset(true)
                     setFilteredData(result);
                     //alert(event.target.value)
                     }
+
+const[check29,setCheck29]=useState(false)
+const[check30,setCheck30]=useState(false)
+const[check31,setCheck31]=useState(false)
                     const handleServices = (event) => {
                         let value = event.target.value.toLowerCase();
+                        if(value==="home services"){
+                          setCheck29(true)
+                        }
+                        else if(value==="design")
+                        {
+                          setCheck30(true)
+                        }
+                        
+                        else{
+                          setCheck31(true)
+                        }
                         let result = [];
                         console.log(value);
                         result = filteredData.filter((data) => {
                         return data.service.search(value) !== -1;
                         });
+                        setOrg(true)
+    setReset(true)
                         setFilteredData(result);
                         //alert(event.target.value)
                         }
+
+                          //checkbox state
+const[checks1,setChecks1]=useState(false)
+const[checks2,setChecks2]=useState(false)
+const[checks3,setChecks3]=useState(false)
+const[checks4,setChecks4]=useState(false)
+const[checks5,setChecks5]=useState(false)
+const[checks6,setChecks6]=useState(false)
+const[checks7,setChecks7]=useState(false)
+const[checks8,setChecks8]=useState(false)
+const[checks9,setChecks9]=useState(false)
+const[checks10,setChecks10]=useState(false)
+const[checks11,setChecks11]=useState(false)
+const[checks12,setChecks12]=useState(false)
+const[checks13,setChecks13]=useState(false)
+const[checks14,setChecks14]=useState(false)
+const[checks15,setChecks15]=useState(false)
+const[checks16,setChecks16]=useState(false)
+const[checks17,setChecks17]=useState(false)
+const[checks18,setChecks18]=useState(false)
+
+
                         const handleEvents = (event) => {
                             let value = event.target.value.toLowerCase();
+
+                            if(value==="free"){
+                              setChecks1(true)
+                            }
+                            else if(value==="carbon nuetral")
+                            {
+                              setChecks2(true)
+                            }
+                            else if(value==="self guided")
+                            {
+                              setChecks3(true)
+                            }
+                            else if(value==="catered")
+                            {
+                              setChecks4(true)
+                            }
+                            else if(value==="overnight")
+                            {
+                              setChecks5(true)
+                            }
+                            else if(value==="arducus")
+                            {
+                              setChecks6(true)
+                            }
+                            else if(value==="remote")
+                            {
+                              setChecks7(true)
+                            }
+                            else if(value==="cultural")
+                            {
+                              setChecks8(true)
+                            }
+                            else if(value==="greater benefit")
+                            {
+                              setChecks9(true)
+                            }
+                            else if(value==="family friendly")
+                            {
+                              setChecks10(true)
+                            }
+                            else if(value==="easy as")
+                            {
+                              setChecks11(true)
+                            }
+                            else if(value==="training")
+                            {
+                              setChecks12(true)
+                            }
+                            else if(value==="educational")
+                            {
+                              setChecks13(true)
+                            }
+                            else if(value==="volunteers")
+                            {
+                              setChecks14(true)
+                            }
+                            else if(value==="policy")
+                            {
+                              setChecks15(true)
+                            }
+                            else if(value==="profit")
+                            {
+                              setChecks16(true)
+                            }
+                            else if(value==="music and art")
+                            {
+                              setChecks17(true)
+                            }
+                            
+                            
+                            
+                            else{
+                              setChecks18(true)
+                            }
                             let result = [];
                             console.log(value);
                             result = filteredData.filter((data) => {
@@ -207,8 +472,92 @@ function Search() {
                             setFilteredData(result);
                            // alert(event.target.value)
                             }
+
+                             //checkbox state
+const[checkss1,setCheckss1]=useState(false)
+const[checkss2,setCheckss2]=useState(false)
+const[checkss3,setCheckss3]=useState(false)
+const[checkss4,setCheckss4]=useState(false)
+const[checkss5,setCheckss5]=useState(false)
+const[checkss6,setCheckss6]=useState(false)
+const[checkss7,setCheckss7]=useState(false)
+const[checkss8,setCheckss8]=useState(false)
+const[checkss9,setCheckss9]=useState(false)
+const[checkss10,setCheckss10]=useState(false)
+const[checkss11,setCheckss11]=useState(false)
+const[checkss12,setCheckss12]=useState(false)
+const[checkss13,setCheckss13]=useState(false)
+const[checkss14,setCheckss14]=useState(false)
+const[checkss15,setCheckss15]=useState(false)
+const[checkss16,setCheckss16]=useState(false)
+
+
                             const handleProjects = (event) => {
                                 let value = event.target.value.toLowerCase();
+
+                                if(value==="research"){
+                                  setCheckss1(true)
+                                }
+                                else if(value==="citizen science")
+                                {
+                                  setCheckss2(true)
+                                }
+                                else if(value==="new itiatives")
+                                {
+                                  setCheckss3(true)
+                                }
+                                else if(value==="black spot")
+                                {
+                                  setCheckss4(true)
+                                }
+                                else if(value==="preservation")
+                                {
+                                  setCheckss5(true)
+                                }
+                                else if(value==="rehab")
+                                {
+                                  setCheckss6(true)
+                                }
+                                else if(value==="crowd funding")
+                                {
+                                  setCheckss7(true)
+                                }
+                                else if(value==="involves schools")
+                                {
+                                  setCheckss8(true)
+                                }
+                                else if(value==="arduos")
+                                {
+                                  setCheckss9(true)
+                                }
+                                else if(value==="building")
+                                {
+                                  setCheckss10(true)
+                                }
+                                else if(value==="family friendly")
+                                {
+                                  setCheckss11(true)
+                                }
+                                else if(value==="easy as")
+                                {
+                                  setCheckss12(true)
+                                }
+                                else if(value==="training")
+                                {
+                                  setCheckss13(true)
+                                }
+                                else if(value==="educational")
+                                {
+                                  setCheckss14(true)
+                                }
+                                else if(value==="volunteers")
+                                {
+                                  setCheckss15(true)
+                                }
+                                
+                                else{
+                                  setCheckss16(true)
+                                }
                                 let result = [];
                                 console.log(value);
                                 result = filteredData.filter((data) => {
@@ -277,6 +626,92 @@ function Search() {
           setOrg(false)
           setProj(false)
           setReset(false)
+
+          //focus
+          setCheck(false)
+          setCheck2(false)
+          setCheck3(false)
+          setCheck4(false)
+          setCheck5(false)
+          setCheck6(false)
+
+          //structure
+          setCheck7(false)
+          setCheck8(false)
+          setCheck9(false)
+          setCheck10(false)
+          setCheck11(false)
+
+          //looking
+          setCheck12(false)
+          setCheck13(false)
+          setCheck14(false)
+          setCheck15(false)
+          setCheck16(false)
+          setCheck17(false)
+
+          //location
+          setCheck18(false)
+           setCheck19(false)
+           setCheck20(false)
+           setCheck21(false)
+
+           //provides
+           setCheck22(false)
+           setCheck23(false)
+           setCheck24(false)
+           setCheck25(false)
+           setCheck26(false)
+           setCheck27(false)
+           setCheck28(false)
+          
+           //service
+           setCheck29(false)
+           setCheck30(false)
+           setCheck31(false)
+
+           //events
+           setChecks1(false)
+           setChecks2(false)
+           setChecks3(false)
+           setChecks4(false)
+           setChecks5(false)
+           setChecks6(false)
+           setChecks7(false)
+           setChecks8(false)
+           setChecks9(false)
+           setChecks9(false)
+           setChecks10(false)
+           setChecks11(false)
+           setChecks12(false)
+           setChecks13(false)
+           setChecks14(false)
+           setChecks15(false)
+           setChecks16(false)
+           setChecks17(false)
+           setChecks18(false)
+         
+           //Projects
+           setCheckss1(false)
+           setCheckss2(false)
+           setCheckss3(false)
+           setCheckss4(false)
+           setCheckss5(false)
+           setCheckss6(false)
+           setCheckss7(false)
+           setCheckss8(false)
+           setCheckss9(false)
+           setCheckss9(false)
+           setCheckss10(false)
+           setCheckss11(false)
+           setCheckss12(false)
+           setCheckss13(false)
+           setCheckss14(false)
+           setCheckss15(false)
+           setCheckss16(false)
+           
+         
+  
          db.collection("search").orderBy('timestamp','desc').onSnapshot(snapshot=>{
            console.log(snapshot.docs.map(doc=>doc.data()))
          setAllData(snapshot.docs.map(doc=>doc.data()));
@@ -324,27 +759,27 @@ function Search() {
                 <div className="modal-section">
                  <FormGroup>
                  <FormControlLabel
-                   control={<Checkbox value="aqautic" onChange={(event) =>handleFocus(event)} name="focus" />}
+                   control={<Checkbox value="aqautic" checked={check} onChange={(event) =>{handleFocus(event)}} name="focus" className="checkbox" />}
                    label="Aqautic"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="weed" onChange={(event) =>handleFocus(event)} name="focus" />}
+                   control={<Checkbox value="weed" checked={check2} onChange={(event) =>handleFocus(event)} name="focus" />}
                    label="Weed Management"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="education" onChange={(event) =>handleFocus(event)} name="focus" />}
+                   control={<Checkbox value="education" checked={check3} onChange={(event) =>handleFocus(event)} name="focus" />}
                    label="Policy"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="research" onChange={(event) =>handleFocus(event)} name="focus" />}
+                   control={<Checkbox value="research" checked={check4} onChange={(event) =>handleFocus(event)} name="focus" />}
                    label="Research"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="profit" onChange={(event) =>handleFocus(event)} name="focus" />}
+                   control={<Checkbox value="profit" checked={check5} onChange={(event) =>handleFocus(event)} name="focus" />}
                    label="Profit"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="rescue" onChange={(event) =>handleFocus(event)} name="focus" />}
+                   control={<Checkbox value="rescue" checked={check6} onChange={(event) =>handleFocus(event)} name="focus" />}
                    label="Rescue"
                    />
                 </FormGroup>
@@ -355,23 +790,23 @@ function Search() {
                  <FormLabel component="legend">Structure</FormLabel>
                  <FormGroup>
                  <FormControlLabel
-                   control={<Checkbox value="full volunteer" onChange={(event) =>handleStructure(event)} name="structure" />}
+                   control={<Checkbox value="full volunteer" checked={check7} onChange={(event) =>handleStructure(event)} name="structure" />}
                    label="100% Volunteer"
                    />
                   <FormControlLabel
-                   control={<Checkbox value="professional" onChange={(event) =>handleStructure(event)} name="structure" />}
+                   control={<Checkbox value="professional" checked={check8} onChange={(event) =>handleStructure(event)} name="structure" />}
                    label="Professional"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="partial volunteer" onChange={(event) =>handleStructure(event)} name="structure" />}
+                   control={<Checkbox value="partial volunteer" checked={check9} onChange={(event) =>handleStructure(event)} name="structure" />}
                    label="Partial Volunteer"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="government" onChange={(event) =>handleStructure(event)} name="structure" />}
+                   control={<Checkbox value="government" checked={check10} onChange={(event) =>handleStructure(event)} name="structure" />}
                    label="Government"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="business" onChange={(event) =>handleStructure(event)} name="structure" />}
+                   control={<Checkbox value="business" checked={check11} onChange={(event) =>handleStructure(event)} name="structure" />}
                    label="Business"
                    />
                 </FormGroup>
@@ -382,27 +817,27 @@ function Search() {
                  <FormLabel component="legend">Looking For</FormLabel>
                  <FormGroup>
                  <FormControlLabel
-                   control={<Checkbox value="volunteer" onChange={(event) =>handleLooking(event)} name="looking" />}
+                   control={<Checkbox value="volunteer" checked={check12} onChange={(event) =>handleLooking(event)} name="looking" />}
                    label="Volunteer"
                    />
                   <FormControlLabel
-                   control={<Checkbox value="employees" onChange={(event) =>handleLooking(event)} name="looking" />}
+                   control={<Checkbox value="employees" checked={check13} onChange={(event) =>handleLooking(event)} name="looking" />}
                    label="Employees"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="resources" onChange={(event) =>handleLooking(event)} name="looking" />}
+                   control={<Checkbox value="resources" checked={check14} onChange={(event) =>handleLooking(event)} name="looking" />}
                    label="Resources"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="legal" onChange={(event) =>handleLooking(event)} name="looking" />}
+                   control={<Checkbox value="legal" checked={check15} onChange={(event) =>handleLooking(event)} name="looking" />}
                    label="Legal"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="land" onChange={(event) =>handleLooking(event)} name="looking" />}
+                   control={<Checkbox value="land" checked={check16} onChange={(event) =>handleLooking(event)} name="looking" />}
                    label="Land"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="funding" onChange={(event) =>handleLooking(event)} name="looking" />}
+                   control={<Checkbox value="funding" checked={check17} onChange={(event) =>handleLooking(event)} name="looking" />}
                    label="Funding"
                    />
                 </FormGroup>
@@ -413,19 +848,19 @@ function Search() {
                  <FormLabel component="legend">Location</FormLabel>
                  <FormGroup>
                  <FormControlLabel
-                   control={<Checkbox value="single" onChange={(event) =>handleLocation(event)} name="location" />}
+                   control={<Checkbox value="single" checked={check18} onChange={(event) =>handleLocation(event)} name="location" />}
                    label="Single"
                    />
                   <FormControlLabel
-                   control={<Checkbox value="multiple" onChange={(event) =>handleLocation(event)} name="location" />}
+                   control={<Checkbox value="multiple" checked={check19} onChange={(event) =>handleLocation(event)} name="location" />}
                    label="Multiple"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="where required" onChange={(event) =>handleLocation(event)} name="location" />}
+                   control={<Checkbox value="where required" checked={check20} onChange={(event) =>handleLocation(event)} name="location" />}
                    label="where required"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="online" onChange={(event) =>handleLocation(event)} name="location" />}
+                   control={<Checkbox value="online" checked={check21} onChange={(event) =>handleLocation(event)} name="location" />}
                    label="Online"
                    />
                 </FormGroup>
@@ -439,31 +874,31 @@ function Search() {
             <FormLabel component="legend">Provides</FormLabel>
                  <FormGroup>
                  <FormControlLabel
-                   control={<Checkbox value="people" onChange={(event) =>handleProvides(event)} name="Provides" />}
+                   control={<Checkbox value="people" checked={check22} onChange={(event) =>handleProvides(event)} name="Provides" />}
                    label="People"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="incursions" onChange={(event) =>handleProvides(event)} name="Provides" />}
+                   control={<Checkbox value="incursions" checked={check23} onChange={(event) =>handleProvides(event)} name="Provides" />}
                    label="Incursions"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="training" onChange={(event) =>handleProvides(event)} name="Provides" />}
+                   control={<Checkbox value="training" checked={check24} onChange={(event) =>handleProvides(event)} name="Provides" />}
                    label="Training"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="advice" onChange={(event) =>handleProvides(event)} name="Provides" />}
+                   control={<Checkbox value="advice" checked={check25} onChange={(event) =>handleProvides(event)} name="Provides" />}
                    label="Advice"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="resources" onChange={(event) =>handleProvides(event)} name="Provides" />}
+                   control={<Checkbox value="resources" checked={check26} onChange={(event) =>handleProvides(event)} name="Provides" />}
                    label="Resources"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="space" onChange={(event) =>handleProvides(event)} name="Provides" />}
+                   control={<Checkbox value="space" checked={check27} onChange={(event) =>handleProvides(event)} name="Provides" />}
                    label="Space"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="fauna rehab" onChange={(event) =>handleProvides(event)} name="Provides" />}
+                   control={<Checkbox value="fauna rehab" checked={check28} onChange={(event) =>handleProvides(event)} name="Provides" />}
                    label="Fauna Rehab"
                    />
                 </FormGroup>
@@ -474,15 +909,15 @@ function Search() {
             <FormLabel component="legend">Services</FormLabel>
                  <FormGroup>
                  <FormControlLabel
-                   control={<Checkbox value="home services" onChange={(event) =>handleServices(event)} name="services" />}
+                   control={<Checkbox value="home services" checked={check29} onChange={(event) =>handleServices(event)} name="services" />}
                    label="Home Services"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="design" onChange={(event) =>handleServices(event)} name="services" />}
+                   control={<Checkbox value="design" checked={check30} onChange={(event) =>handleServices(event)} name="services" />}
                    label="Design"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="legal" onChange={(event) =>handleServices(event)} name="services" />}
+                   control={<Checkbox value="legal" checked={check31} onChange={(event) =>handleServices(event)} name="services" />}
                    label="Legal"
                    />
                 </FormGroup>
@@ -507,75 +942,75 @@ function Search() {
                  <FormLabel component="legend">Events</FormLabel>
                  <FormGroup>
                  <FormControlLabel
-                   control={<Checkbox value="free" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="free" checked={checks1} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="for a fee"
                    />
                   <FormControlLabel
-                   control={<Checkbox value="carbon nuetral" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="carbon nuetral" checked={checks2} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="carbon nuetral"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="self guided" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="self guided" checked={checks3} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="self guided"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="catered" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="catered" checked={checks4} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="catered"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="overnight" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="overnight" checked={checks5} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="overnight"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="arducus" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="arducus" checked={checks6} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="arducus"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="remote" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="remote" checked={checks7} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="remote"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="cultural" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="cultural" checked={checks8} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="cultural"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="greater benefit" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="greater benefit" checked={checks9} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="greater benefit"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="family friendly" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="family friendly" checked={checks10} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="family friendly"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="easy as" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="easy as" checked={checks11} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="easy as"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="training" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="training" checked={checks12} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="training"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="educational" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="educational" checked={checks13} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="educational"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="volunteers" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="volunteers" checked={checks14} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="volunteers"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="policy" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="policy" checked={checks15} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="policy"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="profit" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="profit" checked={checks16} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="profit"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="music and art" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="music and art" checked={checks17} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="music and art"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="citizen" onChange={(event) =>handleEvents(event)} name="structure" />}
+                   control={<Checkbox value="citizen" checked={checks18} onChange={(event) =>handleEvents(event)} name="structure" />}
                    label="citizen"
                    />
                 </FormGroup>
@@ -601,67 +1036,67 @@ function Search() {
                  <FormLabel component="legend">Projects</FormLabel>
                  <FormGroup>
                  <FormControlLabel
-                   control={<Checkbox value="research" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="research" checked={checkss1} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="research"
                    />
                 <FormControlLabel
-                   control={<Checkbox value="citizen science" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="citizen science" checked={checkss2} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="citizen science"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="new itiatives" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="new itiatives" checked={checkss3} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="new itiatives"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="black spot" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="black spot" checked={checkss4} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="black spot"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="preservation" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="preservation" checked={checkss5} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="preservation"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="rehab" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="rehab" checked={checkss6} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="rehab"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="crowd funding" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="crowd funding" checked={checkss7} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="crowd funding"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="involves schools" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="involves schools" checked={checkss8} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="involves schools"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="arduos" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="arduos" checked={checkss9} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="arduos"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="building" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="building" checked={checkss10} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="building"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="family friendly" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="family friendly" checked={checkss11} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="family friendly"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="easy as" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="easy as" checked={checkss12} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="easy as"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="training" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="training" checked={checkss13} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="training"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="educational" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="educational" checked={checkss14} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="educational"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="volunteers" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="volunteers" checked={checkss15} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="volunteers"
                    />
                    <FormControlLabel
-                   control={<Checkbox value="policy" onChange={(event) =>handleProjects(event)} name="Projects" />}
+                   control={<Checkbox value="policy" checked={checkss16} onChange={(event) =>handleProjects(event)} name="Projects" />}
                    label="policy"
                    />
                   
